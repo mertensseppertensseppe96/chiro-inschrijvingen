@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-3">
+       <form [formGroup]="this.lidService.form" (ngSubmit)="onSubmit()">
+           <input type="hidden" formControlName="$key">
+           <div class="form-group">
+              <label>Full Name</label> 
+              <input type="text" formControlName="fullName" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.fullName.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.fullName.errors">Dit veld moet ingevuld zijn</div>
+           </div>
+           <div class="form-group">
+              <label>Group</label> 
+              <input type="text" formControlName="group" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.group.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && formControls.group.errors">Dit veld moet ingevuld zijn</div>
+
+            </div>
+           <div class="form-group">
+                <label>Email</label> 
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.email.errors}">
+                <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">Email niet correct</div>
+             </div>
+           <div class="form-group">
+              <label>Payed</label> 
+              <input type="checkbox" formControlName="payed" class="form-control">
+           </div>
+           <div class="form-group">
+                <label>Functie</label> 
+                <input type="text" formControlName="functie" class="form-control">
+             </div>
+             <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+            <div class="alert alert-info" *ngIf="showSuccesMessage">Toegevoegd!</div>
+       </form> 
+    </div>
+    <div class="col-md-9">
+        <app-lid-lijst></app-lid-lijst>
+    </div>
+</div>
