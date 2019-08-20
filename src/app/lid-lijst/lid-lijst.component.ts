@@ -9,7 +9,7 @@ import { LidService } from '../shared/lid.service';
 })
 export class LidLijstComponent implements OnInit {
 
-  constructor(private lidService:LidService) { }
+  constructor(public lidService:LidService) { }
   lidArray = [];
   showDeleteMessage:boolean;
   searchText:string = "";

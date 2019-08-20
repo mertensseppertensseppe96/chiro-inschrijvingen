@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   constructor() { }
-
+  firstName:string;
+  lastName:string;
   ngOnInit() {
+    this.firstName=sessionStorage.getItem("firstname");
+    this.lastName=sessionStorage.getItem("lastname");
   }
-
-    shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-
-  
+ 
 }
