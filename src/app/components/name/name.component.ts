@@ -9,16 +9,16 @@ import { Router } from '@angular/router';
 export class NameComponent implements OnInit {
 
   constructor(public router: Router) { }
-  nameSet:boolean;
+  nameSet: boolean;
   ngOnInit() {
-    
+    if (localStorage.getItem("herinnering") != null) {
+      localStorage.removeItem("herinnering");
+    }
+
   }
-  onSubmit(firstName,lastName){
-    // localStorage.removeItem("lastname");
-    // localStorage.removeItem("firstname");
-    localStorage.setItem("lastname", lastName);
-    localStorage.setItem("firstname", firstName);
+  onSubmit(her) {
+    localStorage.setItem("herinnering", her);
     this.router.navigate(['home']);
   }
-  
+
 }

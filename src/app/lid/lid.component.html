@@ -1,39 +1,50 @@
 <div class="row">
-    <div class="col-md-3 col-xs4">
-       <form [formGroup]="this.lidService.form" (ngSubmit)="onSubmit()">
-           <input type="hidden" formControlName="$key">
-           <div class="form-group">
-              <label for="fullName">Full Name</label> 
-              <input type="text" id="fullName" formControlName="fullName" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.fullName.errors}">
-              <div class="invalid-feedback" *ngIf="submitted && formControls.fullName.errors">Dit veld moet ingevuld zijn</div>
-           </div>
-           <div class="form-group">
-              <label for="group">Group</label> 
-              <input type="text" id="group" formControlName="group" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.group.errors}">
-              <div class="invalid-feedback" *ngIf="submitted && formControls.group.errors">Dit veld moet ingevuld zijn</div>
+   <div class="col-md-3 col-xs4">
+      <form [formGroup]="this.lidService.form" (ngSubmit)="onSubmit()">
+         <input type="hidden" formControlName="$key">
+         <div class="form-group">
+            <mat-form-field class="full-width">
+               <input matInput placeholder="Full name" type="text" id="fullName" formControlName="fullName"
+                  class="form-control" [ngClass]="{'is-invalid':submitted && formControls.fullName.errors}">
+            </mat-form-field>
+            <div class="invalid-feedback" *ngIf="submitted && formControls.fullName.errors">Dit veld moet ingevuld zijn
+            </div>
+         </div>
+         <div class="form-group">
+            <mat-form-field class="full-width">
+               <input matInput placeholder="Group" type="text" id="group" formControlName="group" class="form-control"
+                  [ngClass]="{'is-invalid':submitted && formControls.group.errors}">
+            </mat-form-field>
+            <div class="invalid-feedback" *ngIf="submitted && formControls.group.errors">Dit veld moet ingevuld zijn
+            </div>
 
-            </div>
-           <div class="form-group">
-                <label for="email">Email</label> 
-                <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.email.errors}">
-                <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">Email niet correct</div>
-             </div>
-           <div class="form-group">
-              <label for="payed">Payed</label> 
-              <input type="checkbox" id="payed" formControlName="payed" class="form-control">
-           </div>
-           <div class="form-group">
-                <label for="functie">Functie</label> 
-                <input type="text" id="functie" formControlName="functie" class="form-control">
-             </div>
-             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit" >
-            </div>
-       </form> 
-    </div>
-    <div class="col-md-9 col-xs-8">
-        <app-lid-lijst></app-lid-lijst>
-    </div>
+         </div>
+         <div class="form-group">
+            <mat-form-field class="full-width">
+               <input matInput placeholder="Email" type="email" id="email" formControlName="email" class="form-control"
+                  [ngClass]="{'is-invalid':submitted && formControls.email.errors}">
+            </mat-form-field>
+            <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">Email niet correct</div>
+         </div>
+         <div class="form-group">
+            <mat-checkbox id="payed" formControlName="payed">Payed </mat-checkbox>
+         </div>
+         <div class="form-group">
+            <mat-form-field class="full-width">
+               <input matInput placeholder="Position" type="text" id="functie" formControlName="functie"
+                  class="form-control">
+            </mat-form-field>
+         </div>
+         <div class="form-group">
+            <button mat-raised-button color="primary" type="submit" class="btn btn-primary">Submit</button>
+         </div>
+      </form>
+   </div>
+   <div class="col-md-9 col-xs-8">
+      <app-lid-lijst></app-lid-lijst>
+   </div>
 </div>
-<mat-icon>face</mat-icon>
-          <span>{{firstName}} {{lastName}}</span>
+<div *ngIf="herinnering">
+   <mat-icon>info</mat-icon>
+   <span>{{herinnering}}</span>
+</div>

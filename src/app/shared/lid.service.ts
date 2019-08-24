@@ -9,7 +9,7 @@ import { VirtualTimeScheduler } from 'rxjs';
 })
 export class LidService {
 
-  constructor(private firebase:AngularFireDatabase) { }
+  constructor(private firebase: AngularFireDatabase) { }
 
   lidLijst: AngularFireList<any>;
 
@@ -22,12 +22,12 @@ export class LidService {
     functie: new FormControl('Lid')
   });
 
-  getLeden(){
+  getLeden() {
     this.lidLijst = this.firebase.list('leden');
     return this.lidLijst.snapshotChanges();
   }
 
-  insertLid(lid){
+  insertLid(lid) {
     this.lidLijst.push({
       fullName: lid.fullName,
       group: lid.group,
@@ -36,11 +36,20 @@ export class LidService {
       functie: lid.functie
     });
   }
-  populateForm(lid){
+  populateForm(lid) {
     this.form.setValue(lid);
+    // window.scroll(0,0);
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 30); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
-  updateLid(lid){
-    this.lidLijst.update(lid.$key, 
+  updateLid(lid) {
+    this.lidLijst.update(lid.$key,
       {
         fullName: lid.fullName,
         group: lid.group,
@@ -49,7 +58,7 @@ export class LidService {
         functie: lid.functie
       });
   }
-  deleteLid($key: string){
+  deleteLid($key: string) {
     this.lidLijst.remove($key);
   }
 }

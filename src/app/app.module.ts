@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { MatMenuModule,MatButtonModule, MatIconModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatIconModule, MatSnackBarModule, MatInputModule, MatCheckboxModule, MatCardModule } from '@angular/material';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NameComponent } from './components/name/name.component';
+import { LoginComponent } from './auth/login/login.component';
 // import { AngularFireAuthModule } from '@angular/fire/auth’;
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { NameComponent } from './components/name/name.component';
     LidLijstComponent,
     AboutComponent,
     HeaderComponent,
-    NameComponent
+    NameComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +40,11 @@ import { NameComponent } from './components/name/name.component';
     MatButtonModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AngularFireAuthModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
